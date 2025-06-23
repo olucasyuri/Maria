@@ -6,14 +6,32 @@
   <title>Maria Bárbara</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
   <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
 </head>
-<body>
+<body onclick="document.getElementById('player').play()">
   <h1>Maria Bárbara</h1>
-<!-- Música de fundo -->
-<audio autoplay loop>
-    <source src="musica.mp3" type="audio/mp3">
-    Seu navegador não suporta áudio.
+  <!-- Música de fundo -->
+  <audio id="player" loop>
+    <source src="musica.mp3" type="audio/mpeg">
   </audio>
+  <div class="coraçoes"></div>
+  <!-- Modal da Surpresa de Amor -->
+<div id="surpresaModal" class="modal-surpresa">
+  <div class="modal-content surpresa-content">
+    <span class="close" onclick="fecharSurpresa()">&times;</span>
+
+    <div class="surpresa-texto">
+      <h2>💖 Minha Surpresa de Amor 💖</h2>
+      <p>Você é a razão dos meus sorrisos, dos meus sonhos mais doces e da minha felicidade diária. Obrigado por existir na minha vida! ❤️</p>
+    </div>
+
+    <!-- Corações agora dentro da box -->
+    <div class="coraçoes"></div>
+
+    <button onclick="fecharSurpresa()">Fechar com Amor 💌</button>
+  </div>
+</div>
   <div class="swiper">
     <div class="swiper-wrapper">
       <div class="swiper-slide"><img src="foto1.jpg" alt="Foto 1"/></div>
@@ -43,6 +61,9 @@
   <button class="galeria-btn" onclick="document.getElementById('galeriaModal').style.display='flex'">
     📷 Ver nossa Galeria de Memórias
   </button>
+
+  <button class="surpresa-btn" onclick="abrirSurpresa()">💖 Surpresa de Amor</button>
+
 
   <!-- Modal da Galeria -->
   <div id="galeriaModal" class="modal">

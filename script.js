@@ -28,6 +28,15 @@ function atualizarContador() {
 
   document.getElementById("contador").innerText =
     `Compartilhando momentos há ${anos} anos ${meses} meses ${dias} dias ${horas} horas ${minutos} minutos ${segundos} segundos ❤️`;
+    
 }
 setInterval(atualizarContador, 1000);
 atualizarContador();
+
+function abrirSurpresa() {
+  document.getElementById('surpresaModal').style.display = 'flex';
+}
+
+function fecharSurpresa() {
+  document.getElementById('surpresaModal').style.display = 'none';
+}

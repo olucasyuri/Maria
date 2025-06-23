@@ -39,6 +39,8 @@ h1 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  position: relative;
+  z-index: 1;
 }
 
 .contador-box {
@@ -90,100 +92,9 @@ h1 {
 }
 
 @keyframes chuva {
-  0% {
-    transform: translateY(-200px);
-    opacity: 0;
-  }
-  30% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100vh);
-    opacity: 0;
-  }
-}
-.galeria-btn {
-  margin-top: 30px;
-  padding: 10px 20px;
-  font-size: 1.2em;
-  border: none;
-  border-radius: 10px;
-  background-color: #ff3c3c;
-  color: white;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.galeria-btn:hover {
-  background-color: #e73030;
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  background-color: #222;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 90%;
-  max-height: 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.modal-content img {
-  width: 100%;
-  max-height: 400px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 15px;
-  display: none;
-  animation: fadeIn 0.5s ease forwards;
-}
-
-.modal-content img.active {
-  display: block;
-}
-
-.close {
-  color: #fff;
-  align-self: flex-end;
-  font-size: 28px;
-  cursor: pointer;
-  margin-bottom: 10px;
-}
-
-.modal-controls {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: 10px;
-}
-
-.modal-controls button {
-  padding: 8px 16px;
-  background-color: #ff3c3c;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 1em;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+  0% { transform: translateY(-200px); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
 }
 
 body::before {
@@ -216,21 +127,181 @@ body::before {
   50% { opacity: 1; transform: scale(1.5); }
 }
 
-.swiper-slide img {
-  position: relative;
-  z-index: 1;
+.galeria-btn, .surpresa-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
 }
 
-.sparkle {
-  position: absolute;
+.galeria-btn {
+  background-color: #ff3c3c;
+  transition: background 0.3s;
+}
+
+.galeria-btn:hover {
+  background-color: #e73030;
+}
+
+.surpresa-btn {
+  background-color: pink;
+  box-shadow: 0 0 10px rgba(255, 192, 203, 0.7);
+  color: white;
+  font-size: 16px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, transparent 70%);
-  animation: sparkleMove 3s infinite linear;
-  pointer-events: none;
+  background-color: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes sparkleMove {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 100% 100%; }
+.modal-content {
+  background-color: #222;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 90%;
+  max-height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-content img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  display: none;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.modal-content img.active {
+  display: block;
+}
+
+.modal-content .close {
+  color: #fff;
+  align-self: flex-end;
+  font-size: 28px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+/* -------- Modal Surpresa de Amor -------- */
+/* -------- Modal Surpresa de Amor -------- */
+
+/* Container geral do modal (Fundo escuro da tela) */
+#surpresaModal.modal-surpresa {
+  display: none; /* ✅ Começa invisível */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Quando abrir, ativa o display flex */
+#surpresaModal.modal-surpresa.active {
+  display: flex;
+}
+
+/* Caixa branca de conteúdo */
+.modal-content.surpresa-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  color: black;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  animation: slideDown 0.5s ease;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* ✅ Faz o botão ficar no final */
+  min-height: 500px;
+  position: relative;
+}
+
+/* Área do texto */
+.surpresa-texto {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Botão de fechar com amor */
+.surpresa-content button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: pink;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+  box-shadow: 0 0 10px rgba(255, 192, 203, 0.7);
+  align-self: center;
+}
+
+/* Ícone de fechar no topo */
+.modal-content.surpresa-content .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+  color: black;
+}
+
+/* Animação de entrada */
+@keyframes slideDown {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Animação de corações */
+.coraçoes {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.coraçoes::before,
+.coraçoes::after {
+  content: "💖";
+  position: absolute;
+  animation: subir 3s infinite ease-in-out;
+  font-size: 24px;
+}
+
+.coraçoes::after {
+  left: 50%;
+  animation-delay: 1s;
+}
+
+@keyframes subir {
+  0% { bottom: 0; opacity: 0; }
+  50% { opacity: 1; }
+  100% { bottom: 150px; opacity: 0; }
 }
