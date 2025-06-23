@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maria Bárbara</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <h1>Maria Bárbara</h1>
+<!-- Música de fundo -->
+<audio autoplay loop>
+    <source src="musica.mp3" type="audio/mp3">
+    Seu navegador não suporta áudio.
+  </audio>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="foto1.jpg" alt="Foto 1"/></div>
+      <div class="swiper-slide"><img src="foto2.jpg" alt="Foto 2"/></div>
+      <div class="swiper-slide"><img src="foto3.jpg" alt="Foto 3"/></div>
+    </div>
+  </div>
+
+  <div class="contador-box">
+    <div class="tempo" id="contador">Carregando tempo de amor... ❤️</div>
+    <div class="desde">Desde 08 de outubro de 2021</div>
+  </div>
+
+  <div class="mensagem">
+    Quando quero fugir do mundo, sempre encontro abrigo no seu sorriso.
+    Ao lembrar do brilho dos seus lindos olhos, esqueço dos meus problemas.
+    Ah, como é bom te amar... você trouxe cor onde antes só havia cinza.
+    Entre tantas pessoas e possibilidades, nós nos escolhemos e continuamos escolhendo estar juntos.
+    E se eu pudesse, escolheria você mais mil vezes.<br>
+    <strong>Nunca se esqueça: eu amo você</strong><br>
+    <strong> Do seu maior Fã❤️</strong>
+  </div>
+
+  <div class="meteoro"></div>
+
+  <!-- Botão Galeria -->
+  <button class="galeria-btn" onclick="document.getElementById('galeriaModal').style.display='flex'">
+    📷 Ver nossa Galeria de Memórias
+  </button>
+
+  <!-- Modal da Galeria -->
+  <div id="galeriaModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="document.getElementById('galeriaModal').style.display='none'">&times;</span>
+      <img src="foto1.jpg" alt="Memória 1" class="active">
+      <img src="foto5.jfif" alt="Memória 5">
+      <img src="foto6.jfif" alt="Memória 6">
+      <img src="foto7.jfif" alt="Memória 7">
+      <img src="foto8.jfif" alt="Memória 8">
+      <img src="foto9.jfif" alt="Memória 9">
+      <img src="foto10.jfif" alt="Memória 10">
+      <img src="foto11.jfif" alt="Memória 11">
+      <img src="foto12.jfif" alt="Memória 12">
+      <img src="foto13.jfif" alt="Memória 13">
+      <img src="foto14.jfif" alt="Memória 14">
+      <img src="foto15.jfif" alt="Memória 15">
+      <img src="foto16.jfif" alt="Memória 16">
+      <img src="foto17.jfif" alt="Memória 17">
+      <img src="foto18.jfif" alt="Memória 18">
+      <img src="foto19.jfif" alt="Memória 19">
+      <img src="foto20.jfif" alt="Memória 20">
+      <img src="foto21.jfif" alt="Memória 21">
+      <img src="foto22.jfif" alt="Memória 22">
+      <img src="foto2.jpg" alt="Memória 2">
+      <img src="foto3.jpg" alt="Memória 3">
+      <img src="foto4.jpg" alt="Memória 4">
+      <div class="modal-controls">
+        <button onclick="trocarImagem(-1)">⟵ Anterior</button>
+        <button onclick="trocarImagem(1)">Próxima ⟶</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="meteoro"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="script.js"></script>
+  <script>
+    let indiceAtual = 0;
+    const imagens = document.querySelectorAll(".modal-content img");
+
+    function trocarImagem(direcao) {
+      imagens[indiceAtual].classList.remove("active");
+      indiceAtual = (indiceAtual + direcao + imagens.length) % imagens.length;
+      imagens[indiceAtual].classList.add("active");
+    }
+    for (let i = 0; i < 80; i++) {
+      const estrela = document.createElement("div");
+      estrela.classList.add("twinkle");
+      estrela.style.top = `${Math.random() * 100}%`;
+      estrela.style.left = `${Math.random() * 100}%`;
+      estrela.style.animationDelay = `${Math.random() * 2}s`;
+      estrela.style.width = `${Math.random() * 3 + 1}px`;
+      estrela.style.height = estrela.style.width;
+      document.body.appendChild(estrela);
+    }
+  </script>
+</body>
+</html>
